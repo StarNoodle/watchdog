@@ -12,7 +12,7 @@ const main = () => {
           "handle_get_url_info",
           function ({ mediaInfo, list }) {
             if (mediaInfo && list) {
-              const { url, origine, cible, valeur } = mediaInfo;
+              const { url, origine, cible, value } = mediaInfo;
               if (url) {
                 $("#content #content_test").text("Background JS : " + url);
               } else {
@@ -20,19 +20,20 @@ const main = () => {
               }
 
               $("#content #owner_name").text(
-                `${origine}, ${valeur} %, ${cible}`
+                `${origine}, ${value} %, ${cible}`
               );
 
               $("#content #owner_name").append("<br/> <br/>");
 
+              console.log("LIST", list);
               // formatForceGraphData(list);
               const element = document.createElement("div");
               for (let mediaRelationships of list) {
                 const relationsElement = document.createElement("p");
                 for (let relation of mediaRelationships) {
                   $(relationsElement).append(
-                    `<div>${relation.name}</div><div>${relation.valeur || ""}${
-                      relation.valeur ? "%" : ""
+                    `<div>${relation.name}</div><div>${
+                      relation.value || ""
                     }</div>`
                   );
                 }
@@ -102,14 +103,13 @@ function formatForceGraphData(data) {
   reverseDataWithType.forEach((_rdwt) => {
     _rdwt.forEach((_rd, _i) => {
       const index = result.findIndex(
-        (_r) => _r.name === _rd.name && _r.valeur === _rd.valeur
+        (_r) => _r.name === _rd.name && _r.value === _rd.value
       );
       if (index === -1) {
         if (_i > 0) {
           const ancestor = _rdwt[_i - 1];
           const targetAncestorIndex = result.findIndex(
-            (_ta) =>
-              _ta.name === ancestor.name && _ta.valeur === ancestor.valeur
+            (_ta) => _ta.name === ancestor.name && _ta.value === ancestor.value
           );
           result.push(Object.assign({}, _rd, { target: targetAncestorIndex }));
         } else {

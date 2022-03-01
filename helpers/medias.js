@@ -18,12 +18,12 @@ export const getListOfRelationsR = (list, current, result = []) => {
       if (findResult) {
         result[findResultIndex].push({
           name: relation.origine,
-          valeur: relation.valeur,
+          value: relation.value,
         });
       } else {
         result.push([
           { name: relation.cible },
-          { name: relation.origine, valeur: relation.valeur },
+          { name: relation.origine, value: relation.value },
         ]);
       }
       getListOfRelationsR(list, relation.origine, result);
@@ -65,7 +65,7 @@ const listToNewspaper = (collection, target, relations) => {
     let relationsClone = [...relations];
     const currentElement = { name: previousItem.cible };
     relationsClone[0] = Object.assign({}, relationsClone[0], {
-      valeur: previousItem.valeur,
+      value: previousItem.value,
     });
     // console.log("relationsClone[0]", relationsClone[0], currentElement);
     relationsClone = [currentElement, ...relationsClone];

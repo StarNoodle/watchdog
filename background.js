@@ -5,8 +5,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "handle_get_url_info") {
     chrome.tabs.query({ currentWindow: true, active: true }).then((res) => {
       const url = res[0].url;
-      // let mediasArray = [];
-      // let relationsMediasArray = [];
       Promise.all([
         readTsvFile("./data/medias_francais.tsv"),
         readTsvFile("./data/relations_medias_francais.tsv"),
@@ -18,9 +16,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           return _rma.cible === mediaByUrl.nom;
         });
 
-        // relationsMediasArray.find(
-        //   (_rma) => _rma.url === getURL(url)
-        // );
         if (currentMedia) {
           const relationship = getRelationShip(
             { mediasArray, relationsMediasArray, mediasUrl },
@@ -97,8 +92,16 @@ const getRelationShip = (
 ) => {
   const mediaRelationsFirstElement = searchWithSanitizedUrl(mediasUrl, url);
 
+  // format fields and value for fields "valeur"
+  const list = relationsMediasArray.map((_l) =>
+    Object.assign({}, _l, {
+      value:
+        _l.valeur && _l.valeur.match(/[0-9]*/) ? `${_l.valeur}%` : _l.valeur,
+    })
+  );
+
   const listOfRelations = getListOfRelations(
-    relationsMediasArray,
+    list,
     mediaRelationsFirstElement.nom
   );
   return listOfRelations;
