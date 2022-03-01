@@ -40,48 +40,38 @@ export const getListOfRelations = (list, current) => {
       let currentRelationsToReplace = [...relations];
       const isItemExist = list.some((_l) => _l.cible === current);
       if (isItemExist) {
-        console.log("isItemExist", isItemExist);
-        console.log(
-          "currentRelationsToReplace[0]",
-          currentRelationsToReplace[0].name
+        currentRelationsToReplace = listToNewspaper(
+          list,
+          current,
+          currentRelationsToReplace
         );
-        while (currentRelationsToReplace[0].name !== current) {
-          const previousListItem = list.filter(
-            (_l) => _l.origine === currentRelationsToReplace[0].name
-          );
-          console.log("previousListItem", previousListItem);
-          const currentListItem = list.find(
-            (_l) => _l.cible === currentRelationsToReplace[0].name
-          );
-          if (previousListItem.length > 0 && currentListItem) {
-            // build "new" current item
-            // add valeur to the first element
-            const currentItem = {
-              name: currentListItem.cible,
-              valeur: currentListItem.valeur,
-            };
-            currentRelationsToReplace[0] = currentItem;
-
-            // build previous item
-            const previousItem = {
-              name: previousListItem[0].cible,
-            };
-
-            currentRelationsToReplace = [
-              previousItem,
-              ...currentRelationsToReplace,
-            ];
-          } else {
-            break;
-          }
-        }
-      } else {
-        console.log("CURRENT", current);
       }
       listOfRelations[index] = currentRelationsToReplace;
     }
   }
-  console.log("getListOfRelations", listOfRelations);
 
   return listOfRelations.map((_lof) => _lof.reverse());
+};
+
+const listToNewspaper = (collection, target, relations) => {
+  if (Array.isArray(relations) && relations[0].name === target) {
+    return relations;
+  }
+
+  const previousListItems = collection.filter(
+    (_l) => _l.origine === relations[0].name
+  );
+  for (let previousItem of previousListItems) {
+    let relationsClone = [...relations];
+    const currentElement = { name: previousItem.cible };
+    relationsClone[0] = Object.assign({}, relationsClone[0], {
+      valeur: previousItem.valeur,
+    });
+    // console.log("relationsClone[0]", relationsClone[0], currentElement);
+    relationsClone = [currentElement, ...relationsClone];
+    const customRelations = listToNewspaper(collection, target, relationsClone);
+    if (customRelations && customRelations[0].name === target) {
+      return customRelations;
+    }
+  }
 };
