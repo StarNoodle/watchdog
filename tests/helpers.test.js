@@ -50,11 +50,11 @@ describe("#getListOfRelations", () => {
       [
         {
           name: "entity3",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity1",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "lexpress",
@@ -63,19 +63,19 @@ describe("#getListOfRelations", () => {
       [
         {
           name: "entity7",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity5",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity4",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity1",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "lexpress",
@@ -84,19 +84,19 @@ describe("#getListOfRelations", () => {
       [
         {
           name: "entity7",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity6",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity4",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity1",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "lexpress",
@@ -105,7 +105,7 @@ describe("#getListOfRelations", () => {
       [
         {
           name: "entity2",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "lexpress",
@@ -148,22 +148,22 @@ describe("#searchLastItems", () => {
       [
         {
           name: "entity3",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity1",
-          valeur: "values",
+          value: "values",
         },
         { name: "newspaper" },
       ],
       [
         {
           name: "entity3",
-          valeur: "values",
+          value: "values",
         },
         {
           name: "entity2",
-          valeur: "values",
+          value: "values",
         },
         { name: "newspaper" },
       ],
