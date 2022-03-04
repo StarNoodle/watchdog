@@ -10,44 +10,82 @@ const main = () => {
       if (url) {
         chrome.runtime.sendMessage(
           "handle_get_url_info",
-          function ({ mediaInfo, list }) {
-            if (mediaInfo && list) {
-              const { url, origine, cible, value } = mediaInfo;
-              if (url) {
-                $("#content #content_test").text("Background JS : " + url);
-              } else {
-                $("#content #content_test").text("rien trouvé");
-              }
+          function ({ url, mediaInfo, list, error }) {
+            if (mediaInfo && list && !error) {
+              const { origine, cible, value } = mediaInfo;
+              // Set title and subtitle
+              document.getElementsByClassName(
+                "page-container__head__info__title"
+              )[0].innerHTML = cible;
+              document.getElementsByClassName(
+                "page-container__head__info__subtitle"
+              )[0].innerHTML = url;
 
-              $("#content #owner_name").text(
-                `${origine}, ${value} %, ${cible}`
+              // Format data
+              const dataset = formatForceGraphData(list);
+
+              // Interface
+              const chartContainerElem = document.getElementsByClassName(
+                "page-container__content__graph"
+              )[0];
+              const chartElem = document.getElementById("chart");
+              const toggleSwitchElem = document.getElementById("toggle-mode");
+              const toggleLabelElem = document.getElementById(
+                "toggle-mode-label"
               );
+              let isSwitchDisabled = false;
+              let currentMode = "default";
+              const loadTimeMs = 400;
 
-              $("#content #owner_name").append("<br/> <br/>");
+              let graph = new Graph(chartElem, dataset);
 
-              console.log("LIST", list);
-              // formatForceGraphData(list);
-              const element = document.createElement("div");
-              for (let mediaRelationships of list) {
-                const relationsElement = document.createElement("p");
-                for (let relation of mediaRelationships) {
-                  $(relationsElement).append(
-                    `<div>${relation.name}</div><div>${
-                      relation.value || ""
-                    }</div>`
+              // first load
+              window.setTimeout(() => {
+                chartContainerElem.classList.toggle(
+                  "page-container__content__graph--loaded"
+                );
+              }, loadTimeMs);
+
+              document.getElementById("toggle-mode").addEventListener(
+                "click",
+                function (e) {
+                  if (isSwitchDisabled == true) {
+                    e.preventDefault();
+                    return;
+                  }
+                  isSwitchDisabled = true;
+
+                  chartContainerElem.classList.toggle(
+                    "page-container__content__graph--loaded"
                   );
-                }
-                $(element).append(relationsElement);
-                $(element).append("<hr/>");
-              }
-              $("#content #owners_info").append(element);
+                  window.setTimeout(() => {
+                    currentMode =
+                      currentMode == "simplified" ? "default" : "simplified";
+                    graph.updateMode(currentMode);
+                    window.setTimeout(() => {
+                      chartContainerElem.classList.toggle(
+                        "page-container__content__graph--loaded"
+                      );
+                      isSwitchDisabled = false;
+                    }, loadTimeMs / 2);
+                  }, loadTimeMs / 2);
+                },
+                false
+              );
             } else {
-              $("#content #content_test").text("rien trouvé");
+              // newspaper not found
+              document
+                .getElementById("error-page")
+                .classList.remove("page--hidden");
+              document.getElementById("app-page").classList.add("page--hidden");
+              // $("#content #content_test").text("rien trouvé");
             }
           }
         );
       } else {
-        $("#content #content_test").text("Une erreur est survenue");
+        document.getElementById("error-page").classList.remove("page--hidden");
+        document.getElementById("app-page").classList.add("page--hidden");
+        // $("#content #content_test").text("Une erreur est survenue");
       }
     });
 };

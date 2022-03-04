@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- <link rel="stylesheet" href="button.css"> -->
+    <script src="lib/d3.min.js"></script>
+    <link rel="stylesheet" href="styles/index.css" />
+    <meta charset="UTF-8" />
   </head>
-  <body style="min-width: 400px">
-    <div id="content">
-      <div id="content_url"></div>
-      <div id="content_test"></div>
-      <div id="owner_name"></div>
-      <div id="owners_info"></div>
+  <body>
+    <div class="app">
+      <!-- Les pages peuvent etres trigger via leur identifiant unique-->
+      <!-- tu peux utiliser la classe .page--hidden pour cacher celle que tu veux-->
+      <div class="page page--hidden" id="error-page">
+        <div class="page-container">
+          <div class="page-container__error">
+            <p>Désolé, il n'y a pas encore de données pour cette adresse !</p>
+          </div>
+        </div>
+      </div>
+      <div class="page" id="app-page">
+        <div class="page-container">
+          <div class="page-container__head">
+            <div class="page-container__head__info">
+              <h2 class="page-container__head__info__title"></h2>
+              <h5 class="page-container__head__info__subtitle"></h5>
+            </div>
+            <div class="page-container__head__switch">
+              <div class="switch-label" id="toggle-mode-label">
+                Mode simplifié
+              </div>
+              <label class="switch">
+                <input class="switch__input" type="checkbox" /><span
+                  class="switch__slider"
+                  id="toggle-mode"
+                ></span>
+              </label>
+            </div>
+          </div>
+          <div class="page-container__content">
+            <div class="page-container__content__graph">
+              <div class="page-container__content__graph__loader"></div>
+              <div class="page-container__content__graph__svg" id="graph"></div>
+            </div>
+            <div class="page-container__content__disclaimer">
+              <p class="page-container__content__disclaimer__text">
+                Généré grâce à la donnée utilisée pour le graph
+                <a
+                  target="_blank"
+                  href="https://www.monde-diplomatique.fr/cartes/PPA"
+                  >“Médias Français : Qui possède quoi ?”</a
+                ><br />
+                Produit par le monde diplomatique. Mis à jour le <b>01/01/22</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="src/jquery.min.js"></script>
+  <script src="src/graph.js"></script>
   <script src="src/app.js" type="module"></script>
 </html>
