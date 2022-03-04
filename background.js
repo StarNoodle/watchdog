@@ -1,6 +1,40 @@
 import { getListOfRelations } from "./helpers/medias.js";
 import { tsvJSON, csvJSON } from "./helpers/dataReader.js";
 
+// let mediasUrl, relationsMediasArray;
+
+// chrome.runtime.onInstalled.addListener(() => {
+//   Promise.all([
+//     readTsvFile("./data/relations_medias_francais.tsv"),
+//     readCsvFile("./data/medias_extracted.csv"),
+//   ]).then(([relations, urls]) => {
+//     mediasUrl = urls;
+//     relationsMediasArray = relations;
+//     console.log("mediasUrl", mediasUrl);
+//   });
+// });
+
+// chrome.tabs.onActivated.addListener(function (activeInfo) {
+//   // how to fetch tab url using activeInfo.tabid
+//   chrome.tabs.get(activeInfo.tabId, function (tab) {
+//     console.log(tab.url);
+//     console.log("MEDIASURL", mediasUrl);
+//     const mediaByUrl = searchWithSanitizedUrl(mediasUrl, getURL(tab.url));
+//     if (mediaByUrl) {
+//       const currentMedia = relationsMediasArray.find((_rma) => {
+//         return _rma.cible === mediaByUrl.nom;
+//       });
+//       if (currentMedia) {
+//         chrome.action.setBadgeText({ text: "LOOOL" });
+//       } else {
+//         chrome.action.setBadgeText({ text: "" });
+//       }
+//     } else {
+//       chrome.action.setBadgeText({ text: "" });
+//     }
+//   });
+// });
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "handle_get_url_info") {
     chrome.tabs.query({ currentWindow: true, active: true }).then((res) => {
@@ -12,26 +46,34 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       ]).then(([mediasArray, relationsMediasArray, mediasUrl]) => {
         // check if url exist in relations array
         const mediaByUrl = searchWithSanitizedUrl(mediasUrl, getURL(url));
-        const currentMedia = relationsMediasArray.find((_rma) => {
-          return _rma.cible === mediaByUrl.nom;
-        });
 
-        if (currentMedia) {
-          const relationship = getRelationShip(
-            { mediasArray, relationsMediasArray, mediasUrl },
-            getURL(url)
-          );
-          sendResponse({ url, mediaInfo: currentMedia, list: relationship });
-          return Promise.resolve({
-            url,
-            mediaInfo: currentMedia,
-            list: relationship,
+        if (mediaByUrl) {
+          const currentMedia = relationsMediasArray.find((_rma) => {
+            return _rma.cible === mediaByUrl.nom;
           });
+
+          if (currentMedia) {
+            const relationship = getRelationShip(
+              { mediasArray, relationsMediasArray, mediasUrl },
+              getURL(url)
+            );
+            sendResponse({ url, mediaInfo: currentMedia, list: relationship });
+            return Promise.resolve({
+              url,
+              mediaInfo: currentMedia,
+              list: relationship,
+            });
+          } else {
+            sendResponse({ url, mediaInfo: null, list: null });
+            return Promise.resolve(
+              chrome.storage.local.remove(["url", "mediaInfo", "list"])
+            );
+          }
         } else {
-          sendResponse({ url, mediaInfo: null, list: null });
-          return Promise.resolve(
-            chrome.storage.local.remove(["url", "mediaInfo", "list"])
-          );
+          const error = new Error("url not found");
+          sendResponse({ url, mediaInfo: null, list: null, error });
+
+          return Promise.resolve({ error });
         }
       });
     });
@@ -93,12 +135,12 @@ const getRelationShip = (
   const mediaRelationsFirstElement = searchWithSanitizedUrl(mediasUrl, url);
 
   // format fields and value for fields "valeur"
-  const list = relationsMediasArray.map((_l) =>
-    Object.assign({}, _l, {
+  const list = relationsMediasArray.map((_l) => {
+    return Object.assign({}, _l, {
       value:
         _l.valeur && _l.valeur.match(/[0-9]*/) ? `${_l.valeur}%` : _l.valeur,
-    })
-  );
+    });
+  });
 
   const listOfRelations = getListOfRelations(
     list,
