@@ -1,39 +1,76 @@
 import { getListOfRelations } from "./helpers/medias.js";
 import { tsvJSON, csvJSON } from "./helpers/dataReader.js";
 
-// let mediasUrl, relationsMediasArray;
+let mediasUrl, relationsMediasArray;
 
-// chrome.runtime.onInstalled.addListener(() => {
-//   Promise.all([
-//     readTsvFile("./data/relations_medias_francais.tsv"),
-//     readCsvFile("./data/medias_extracted.csv"),
-//   ]).then(([relations, urls]) => {
-//     mediasUrl = urls;
-//     relationsMediasArray = relations;
-//     console.log("mediasUrl", mediasUrl);
-//   });
-// });
+const setup = async () => {
+  if (!mediasUrl) {
+    const result = await Promise.all([
+      readTsvFile("./data/relations_medias_francais.tsv"),
+      readCsvFile("./data/medias_extracted.csv"),
+    ]);
+    const [relations, urls] = result;
+    mediasUrl = urls;
+    relationsMediasArray = relations;
+  }
+};
 
-// chrome.tabs.onActivated.addListener(function (activeInfo) {
-//   // how to fetch tab url using activeInfo.tabid
-//   chrome.tabs.get(activeInfo.tabId, function (tab) {
-//     console.log(tab.url);
-//     console.log("MEDIASURL", mediasUrl);
-//     const mediaByUrl = searchWithSanitizedUrl(mediasUrl, getURL(tab.url));
-//     if (mediaByUrl) {
-//       const currentMedia = relationsMediasArray.find((_rma) => {
-//         return _rma.cible === mediaByUrl.nom;
-//       });
-//       if (currentMedia) {
-//         chrome.action.setBadgeText({ text: "LOOOL" });
-//       } else {
-//         chrome.action.setBadgeText({ text: "" });
-//       }
-//     } else {
-//       chrome.action.setBadgeText({ text: "" });
-//     }
-//   });
-// });
+const notfify = (isKnownMedia) => {
+  if (isKnownMedia) {
+    chrome.action.setIcon({
+      path: {
+        16: "icons/icon16-green.png",
+        32: "icons/icon32-green.png",
+      },
+    });
+  } else {
+    chrome.action.setIcon({
+      path: {
+        16: "icons/icon16.png",
+        32: "icons/icon32.png",
+      },
+    });
+  }
+};
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  const { url } = tab;
+  await setup();
+  const mediaByUrl = searchWithSanitizedUrl(mediasUrl, getURL(url));
+  if (mediaByUrl) {
+    const currentMedia = relationsMediasArray.find((_rma) => {
+      return _rma.cible === mediaByUrl.nom;
+    });
+    if (currentMedia) {
+      notfify(true);
+    } else {
+      notfify(false);
+    }
+  } else {
+    notfify(false);
+  }
+});
+
+chrome.tabs.onActivated.addListener(async function (activeInfo) {
+  await setup();
+
+  // how to fetch tab url using activeInfo.tabid
+  chrome.tabs.get(activeInfo.tabId, function (tab) {
+    const mediaByUrl = searchWithSanitizedUrl(mediasUrl, getURL(tab.url));
+    if (mediaByUrl) {
+      const currentMedia = relationsMediasArray.find((_rma) => {
+        return _rma.cible === mediaByUrl.nom;
+      });
+      if (currentMedia) {
+        notfify(true);
+      } else {
+        notfify(false);
+      }
+    } else {
+      notfify(false);
+    }
+  });
+});
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message === "handle_get_url_info") {
@@ -170,5 +207,6 @@ const searchWithSanitizedUrl = (list, url) => {
       return null;
     }
   }
+
   return null;
 };
