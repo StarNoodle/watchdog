@@ -175,7 +175,7 @@ const getRelationShip = (
   const list = relationsMediasArray.map((_l) => {
     return Object.assign({}, _l, {
       value:
-        _l.valeur && _l.valeur.match(/[0-9]*/) ? `${_l.valeur}%` : _l.valeur,
+        _l.valeur && /[0-9]+/.test(_l.valeur) ? `${_l.valeur}%` : _l.valeur,
     });
   });
 
