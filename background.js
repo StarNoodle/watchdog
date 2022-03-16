@@ -6,7 +6,7 @@ let mediasUrl, relationsMediasArray;
 const setup = async () => {
   if (!mediasUrl) {
     const result = await Promise.all([
-      readTsvFile("./data/relations_medias_francais.tsv"),
+      readTsvFile("./data/Medias_francais/relations_medias_francais.tsv"),
       readCsvFile("./data/medias_extracted.csv"),
     ]);
     const [relations, urls] = result;
@@ -77,8 +77,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     chrome.tabs.query({ currentWindow: true, active: true }).then((res) => {
       const url = res[0].url;
       Promise.all([
-        readTsvFile("./data/medias_francais.tsv"),
-        readTsvFile("./data/relations_medias_francais.tsv"),
+        readTsvFile("./data/Medias_francais/medias_francais.tsv"),
+        readTsvFile("./data/Medias_francais/relations_medias_francais.tsv"),
         readCsvFile("./data/medias_extracted.csv"),
       ]).then(([mediasArray, relationsMediasArray, mediasUrl]) => {
         // check if url exist in relations array
