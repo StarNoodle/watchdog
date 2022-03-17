@@ -90,23 +90,46 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           });
 
           if (currentMedia) {
-            const relationship = getRelationShip(
-              { mediasArray, relationsMediasArray, mediasUrl },
-              getURL(url)
-            );
+            try {
+              const relationship = getRelationShip(
+                { mediasArray, relationsMediasArray, mediasUrl },
+                getURL(url)
+              );
 
-            sendResponse({
-              rootUrl: getURL(url),
-              url,
-              mediaInfo: currentMedia,
-              list: relationship,
-            });
-            return Promise.resolve({
-              rootUrl: getURL(url),
-              url,
-              mediaInfo: currentMedia,
-              list: relationship,
-            });
+              sendResponse({
+                rootUrl: getURL(url),
+                url,
+                mediaInfo: currentMedia,
+                list: relationship,
+              });
+              return Promise.resolve({
+                rootUrl: getURL(url),
+                url,
+                mediaInfo: currentMedia,
+                list: relationship,
+              });
+            } catch (e) {
+              sendResponse({
+                rootUrl: getURL(url),
+                url,
+                mediaInfo: null,
+                list: null,
+                error: {
+                  message:
+                    "Un erreur s'est produite, si vous voulez nous la rapportez rendez vous sur <a href='https://github.com/StarNoodle/watch-dogs' onClick='chrome.tabs.create({ url: 'https://github.com/StarNoodle/watch-dogs' });'>cette page </a>",
+                },
+              });
+              return Promise.resolve({
+                rootUrl: getURL(url),
+                url,
+                mediaInfo: null,
+                list: null,
+                error: {
+                  message:
+                    "Un erreur s'est produite, si vous voulez nous la rapportez rendez vous sur <a href='https://github.com/StarNoodle/watch-dogs' onClick='chrome.tabs.create({ url: 'https://github.com/StarNoodle/watch-dogs' });'>cette page </a>",
+                },
+              });
+            }
           } else {
             sendResponse({
               rootUrl: getURL(url),
