@@ -10,7 +10,7 @@ const main = () => {
       if (url) {
         chrome.runtime.sendMessage(
           "handle_get_url_info",
-          function ({ url, mediaInfo, list, error }) {
+          function ({ rootUrl, url, mediaInfo, list, error }) {
             if (mediaInfo && list && !error) {
               const { origine, cible, value } = mediaInfo;
               // Set title and subtitle
@@ -19,7 +19,7 @@ const main = () => {
               )[0].innerHTML = cible;
               document.getElementsByClassName(
                 "page-container__head__info__subtitle"
-              )[0].innerHTML = url;
+              )[0].innerHTML = rootUrl || url;
 
               // Format data
               const dataset = formatForceGraphData(list);

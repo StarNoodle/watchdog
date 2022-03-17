@@ -94,21 +94,39 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
               { mediasArray, relationsMediasArray, mediasUrl },
               getURL(url)
             );
-            sendResponse({ url, mediaInfo: currentMedia, list: relationship });
+
+            sendResponse({
+              rootUrl: getURL(url),
+              url,
+              mediaInfo: currentMedia,
+              list: relationship,
+            });
             return Promise.resolve({
+              rootUrl: getURL(url),
               url,
               mediaInfo: currentMedia,
               list: relationship,
             });
           } else {
-            sendResponse({ url, mediaInfo: null, list: null });
+            sendResponse({
+              rootUrl: getURL(url),
+              url,
+              mediaInfo: null,
+              list: null,
+            });
             return Promise.resolve(
               chrome.storage.local.remove(["url", "mediaInfo", "list"])
             );
           }
         } else {
           const error = new Error("url not found");
-          sendResponse({ url, mediaInfo: null, list: null, error });
+          sendResponse({
+            rootUrl: getURL(url),
+            url,
+            mediaInfo: null,
+            list: null,
+            error,
+          });
 
           return Promise.resolve({ error });
         }
