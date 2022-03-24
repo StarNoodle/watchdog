@@ -23,7 +23,7 @@ Testé sur :
 Le mode complet vous permet de voir l'ensemble des personnes et des entreprises qui finance le journal
 
 <p align="center">
-<img alt="WatchDogs" src="./lemonde_full.png">
+<img alt="WatchDogs" src="resources/lemonde_full.png">
 </p>
 
 ### Mode simplifié
@@ -31,5 +31,5 @@ Le mode complet vous permet de voir l'ensemble des personnes et des entreprises 
 Le mode simplifié vous permet de ne voir que les personnes et les entreprises finaux qui finance le journal
 
 <p align="center">
-<img alt="WatchDogs" src="./lemonde_short.png">
+<img alt="WatchDogs" src="resources/lemonde_short.png">
 </p>
