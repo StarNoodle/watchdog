@@ -1,3 +1,4 @@
+
 <h1>Watchdogs</h1>
 <p>
 <a href="https://github.com/StarNoodle/watch-dogs#licence"><img src="https://img.shields.io/badge/licence-MIT-green" alt="Licence"></a>
@@ -8,10 +9,14 @@
 
 **Watchdogs** est une **extension navigateur** ( pour l'instant éxclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
 
+<br/>
+
+
 <p>
 <a href="chrometruc"><img src="https://img.shields.io/badge/-Installer%20l'extention-informational?style=for-the-badge&logo=appveyor" alt="Current version"></a>
 </p>
 
+<br/>
 
 ### L'application
 
@@ -22,6 +27,8 @@ Le graphique représente l'ensemble des personnes physiques ou morales ayant une
 <img alt="presentation" src="resources/lemonde_full.png">
 
 Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
+
+<br/>
 
 ### Licence
 
