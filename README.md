@@ -1,5 +1,5 @@
 <p>
-  <a href="https://github.com/StarNoodle/watch-dogs" title="logo"><img src="resources/watch-dogs-logo.svg" width="400"></a>
+  <a href="https://github.com/StarNoodle/watch-dogs" title="logo"><img src="resources/logo.svg" width="400"></a>
 </p>
 
 <p>
