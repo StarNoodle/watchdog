@@ -14,10 +14,10 @@
 **Watchdogs** est une **extension navigateur** ( pour l'instant éxclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
 
 <br/>
-
+<br/>
 
 <p>
-<a href="chrometruc"><img src="https://img.shields.io/badge/-Installer%20l'extention-informational?style=for-the-badge&logo=appveyor" alt="Current version"></a>
+  <a href="https://github.com/StarNoodle/watch-dogs" title="logo"><img src="resources/install-button.svg" width="250"></a>
 </p>
 
 <br/>
