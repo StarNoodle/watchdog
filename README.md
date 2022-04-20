@@ -24,7 +24,7 @@
 
 ### L'application
 
-Elle se présente sous la forme d'une petite icone en haut à droite de votre navigateur. Cette icone s'allume si il existe des données concernant le média que vous etes en train de consulter. Si tel est le cas, il suffit de cliquer sur l'icone pour voir le graphique détaillant la gouvernance de ce journal.
+Elle se présente sous la forme d'une petite icone <img src="resources/logo-active.png" alt="logo active"> en haut à droite de votre navigateur. Cette icone s'allume si il existe des données concernant le média que vous etes en train de consulter. Si tel est le cas, il suffit de cliquer sur l'icone pour voir le graphique détaillant la gouvernance de ce journal.
 
 Le graphique représente **l'ensemble des personnes physiques ou morales ayant une implication dans la gouvernance du média** en question. 
 
