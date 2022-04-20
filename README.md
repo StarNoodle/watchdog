@@ -10,7 +10,7 @@
 
 [Installer l'extention](https://chromestore.com)
 
-## L'application
+### L'application
 
 Elle se présente sous la forme d'une petite icone "W" en haut à droite de votre navigateur. Cette icone devient verte si il existe des données concernant le média que vous etes en train de consulter. Si tel est le cas, il suffit de cliquer sur le W pour voir le graphique détaillant la gouvernance de ce journal.
 
@@ -20,6 +20,6 @@ Le graphique représente l'ensemble des personnes physiques ou morales ayant une
 
 Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
 
-## Licence
+### Licence
 
 Ce projet à été développe par Aymeric Georgin et Thibaud Frere sous licence MIT.
