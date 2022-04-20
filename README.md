@@ -11,7 +11,7 @@
 <a href="https://github.com/StarNoodle/watchdog"><img src="https://img.shields.io/github/v/tag/StarNoodle/watchdog" alt="Current version"></a>
 </p>
 
-**Watchdogs** est une **extension navigateur** ( pour l'instant exclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) ( sous licence  ODC-By ) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
+**Watchdog** est une **extension navigateur** ( pour l'instant exclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) ( sous licence  ODC-By ) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
 
 <br/>
 <br/>
