@@ -1,5 +1,7 @@
+<p align="center">
+  <a href="https://github.com/StarNoodle/watch-dogs" title="logo"><img src="resources/logo.svg" width="400"></a>
+</p>
 
-<h1>Watchdogs</h1>
 <p>
 <a href="https://github.com/StarNoodle/watch-dogs#licence"><img src="https://img.shields.io/badge/licence-MIT-green" alt="Licence"></a>
 <a href="https://github.com/StarNoodle/watch-dogs"><img src="https://img.shields.io/chrome-web-store/stars/:storeId" alt="Chrome stars"></a>
