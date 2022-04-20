@@ -20,4 +20,6 @@ Le graphique représente l'ensemble des personnes physiques ou morales ayant une
 
 Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
 
-## Trucs
+## Licence
+
+Ce projet à été développe par Aymeric Georgin et Thibaud Frere sous licence MIT.
