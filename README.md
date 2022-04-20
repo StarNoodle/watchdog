@@ -1,41 +1,23 @@
-<h1 align="center">Watchdogs</h1>
-<p align="center">
+<h1>Watchdogs</h1>
+<p>
 <a href="https://github.com/StarNoodle/watch-dogs#licence"><img src="https://img.shields.io/badge/licence-MIT-green" alt="Licence"></a>
-<a href="https://github.com/StarNoodle/watch-dogs"><img src="https://img.shields.io/badge/platform-chrome" alt="Platform support"></a>
+<a href="https://github.com/StarNoodle/watch-dogs"><img src="https://img.shields.io/chrome-web-store/stars/:storeId" alt="Chrome stars"></a>
 <a href="https://github.com/StarNoodle/watch-dogs"><img src="https://img.shields.io/github/last-commit/StarNoodle/watch-dogs" alt="Last update"></a>
 <a href="https://github.com/StarNoodle/watch-dogs"><img src="https://img.shields.io/github/v/tag/StarNoodle/watch-dogs" alt="Current version"></a>
 </p>
 
-## Extension web pour les lecteurs de la presse française
+**Watchdogs** est une **extension navigateur** ( pour l'instant éxclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur les [données](https://github.com/mdiplo/Medias_francais) de la data-visualisation "Qui possède quoi ?" crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
 
-Watch dogs est une extension web qui permet aux utilisateurs lorsque qu'il visite un site internet d'actualité de connaitre à qui appartient ce media (en utilisant les données [du monde diplomatique](https://github.com/mdiplo/Medias_francais))
+[Installer l'extention](https://chromestore.com)
 
-## Support
+## L'application
 
-Testé sur :
+Elle se présente sous la forme d'une petite icone "W" en haut à droite de votre navigateur. Cette icone devient verte si il existe des données concernant le média que vous etes en train de consulter. Si tel est le cas, il suffit de cliquer sur le W pour voir le graphique détaillant la gouvernance de ce journal.
 
-- Chrome
+Le graphique représente l'ensemble des personnes physiques ou morales ayant une implication dans la gouvernance du média en question. 
 
-## Listes des fonctionnalités
+<img alt="presentation" src="resources/lemonde_full.png">
 
-- Notification sur des urls connues
-- Affichage d'un graph par journaux
-- Ajout du mode simplifié
+Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
 
-## Application
-
-### Mode Complet
-
-Le mode complet vous permet de voir l'ensemble des personnes et des entreprises qui finance le journal
-
-<p align="center">
-<img alt="WatchDogs" src="resources/lemonde_full.png">
-</p>
-
-### Mode simplifié
-
-Le mode simplifié vous permet de ne voir que les personnes et les entreprises finaux qui finance le journal
-
-<p align="center">
-<img alt="WatchDogs" src="resources/lemonde_short.png">
-</p>
+## Trucs
