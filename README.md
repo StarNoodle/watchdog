@@ -30,7 +30,7 @@ Le graphique représente **l'ensemble des personnes physiques ou morales ayant u
 
 Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
 
-<img alt="presentation" src="resources/lemonde_full.png">
+<img alt="presentation" src="resources/demo-screenshot-1280x600.png">
 
 <br/>
 
