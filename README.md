@@ -11,7 +11,7 @@
 <a href="https://github.com/StarNoodle/watchdog"><img src="https://img.shields.io/github/v/tag/StarNoodle/watchdog" alt="Current version"></a>
 </p>
 
-**Watchdog** est une **extension navigateur** ( pour l'instant exclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) ( sous licence  ODC-By ) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
+**Watchdog** est une **extension navigateur** ( pour l'instant exclusivement disponible sur chrome ) qui permet, lors de la visite du site internet d'un journal, d'avoir des informations sur sa gouvernance. L'extension se base sur le [jeu de données](https://github.com/mdiplo/Medias_francais) ( sous licence ODC-By ) de l'infographie ["Médias français : Qui possède quoi ?"](https://www.monde-diplomatique.fr/cartes/PPA) crée et mise à jour par [le monde diplomatique](https://www.monde-diplomatique.fr/).
 
 <br/>
 <br/>
@@ -26,7 +26,7 @@
 
 Elle se présente sous la forme d'une petite icone ( <img src="resources/logo-inactive.png" width="16" alt="logo inactive"> ) en haut à droite de votre navigateur. Cette icone s'allume ( <img src="resources/logo-active.png" width="16" alt="logo active"> ) si il existe des données concernant le média que vous êtes en train de consulter. Si tel est le cas, il suffit de cliquer sur l'icone pour voir le graphique détaillant la gouvernance de ce journal.
 
-Le graphique représente **l'ensemble des personnes physiques ou morales ayant une implication dans la gouvernance du média** en question. 
+Le graphique représente **l'ensemble des personnes physiques ou morales ayant une implication dans la gouvernance du média** en question.
 
 Un mode simplifié vous permettant de filtrer uniquement que les personnes physiques est également présent, pour l'activer, il vous suffit de cliquer sur le bouton en haut à droite du graphique.
 
@@ -34,6 +34,22 @@ Un mode simplifié vous permettant de filtrer uniquement que les personnes physi
 
 <br/>
 
+### Installation pour les développeurs
+
+1. Cloner le dépôt
+
+   ```
+   git clone https://github.com/StarNoodle/watchdog.git
+   ```
+
+2. Ouvrir Chrome et accéder à la page de gestion des extensions
+
+   - Chrome : chrome://extensions/
+
+3. Activer le mode développeur
+
+4. Charger l'extension non empaquetée en sélectionnant le dossier du projet
+
 ### Licence
 
-Ce projet à été développé par Aymeric Georgin et Thibaud Frere sous licence MIT.
+Ce projet a été développé par Aymeric Georgin et Thibaud Frere sous licence MIT.
