@@ -30,9 +30,8 @@ const main = () => {
               )[0];
               const chartElem = document.getElementById("chart");
               const toggleSwitchElem = document.getElementById("toggle-mode");
-              const toggleLabelElem = document.getElementById(
-                "toggle-mode-label"
-              );
+              const toggleLabelElem =
+                document.getElementById("toggle-mode-label");
               let isSwitchDisabled = false;
               let currentMode = "default";
               const loadTimeMs = 400;
@@ -133,6 +132,8 @@ main();
   ];
 */
 function formatForceGraphData(data) {
+
+
   // each first element are type start and last are end, other are middle
   const reverseDataWithType = attributeType(data.map((_d) => _d.reverse()));
 
